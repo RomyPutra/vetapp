@@ -17,7 +17,7 @@ class Riwayat extends BaseController
             session()->setFlashdata('error_login', 'Silahkan login terlebih dahulu untuk mengakses data');
             return redirect()->to('auth/login');
         }
-        $model = new Riwayat_modelt();
+        $model = new Riwayat_model();
         $data['riwayat'] = $model->getRiwayat();
         echo view('riwayat/index', $data);
     }
@@ -28,7 +28,9 @@ class Riwayat extends BaseController
             session()->setFlashdata('error_login', 'Silahkan login terlebih dahulu untuk mengakses data');
             return redirect()->to('auth/login');
         }
-        return view('riwayat/create');
+        $model = new Riwayat_model();
+        $data['riwayatid'] = $model->get_max(array());
+        return view('riwayat/create', $data);
     }
 
     public function store()
@@ -36,12 +38,12 @@ class Riwayat extends BaseController
         $validation =  \Config\Services::validation();
 
         $data = array(
-            'riwayatid' => $this->request->getPost(''),
-            'pasienid' => $this->request->getPost(''),
-            'diagnosa' => $this->request->getPost(''),
-            'tindakan' => $this->request->getPost(''),
-            'obat' => $this->request->getPost(''),
-            'status' => $this->request->getPost(''),
+            'riwayatid' => $this->request->getPost('riwayatid'),
+            'pasienid' => $this->request->getPost('pasienid'),
+            'diagnosa' => $this->request->getPost('diagnosa'),
+            'tindakan' => $this->request->getPost('tindakan'),
+            'obat' => $this->request->getPost('obat'),
+            'status' => $this->request->getPost('status'),
             'createdate' => date("Y-m-d H:i:s"),
             'createby' => session()->get('name'),
             'updateDate' => date("Y-m-d H:i:s"),
@@ -81,12 +83,12 @@ class Riwayat extends BaseController
         $validation =  \Config\Services::validation();
 
         $data = array(
-            'riwayatid' => $this->request->getPost(''),
-            'pasienid' => $this->request->getPost(''),
-            'diagnosa' => $this->request->getPost(''),
-            'tindakan' => $this->request->getPost(''),
-            'obat' => $this->request->getPost(''),
-            'status' => $this->request->getPost(''),
+            'riwayatid' => $this->request->getPost('riwayatid'),
+            'pasienid' => $this->request->getPost('pasienid'),
+            'diagnosa' => $this->request->getPost('diagnosa'),
+            'tindakan' => $this->request->getPost('tindakan'),
+            'obat' => $this->request->getPost('obat'),
+            'status' => $this->request->getPost('status'),
             'updateDate' => date("Y-m-d H:i:s"),
             'updateby' => session()->get('name'),
         );

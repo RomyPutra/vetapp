@@ -17,7 +17,7 @@ class Pasien extends BaseController
             session()->setFlashdata('error_login', 'Silahkan login terlebih dahulu untuk mengakses data');
             return redirect()->to('auth/login');
         }
-        $model = new Pasien_modelt();
+        $model = new Pasien_model();
         $data['pasien'] = $model->getPasien();
         echo view('pasien/index', $data);
     }
@@ -36,11 +36,11 @@ class Pasien extends BaseController
         $validation =  \Config\Services::validation();
 
         $data = array(
-            'pasienid' => $this->request->getPost(''),
-            'pasienname' => $this->request->getPost(''),
-            'gender' => $this->request->getPost(''),
-            'age' => $this->request->getPost(''),
-            'status' => $this->request->getPost(''),
+            'pasienid' => $this->request->getPost('pasienid'),
+            'pasienname' => $this->request->getPost('pasienname'),
+            'gender' => $this->request->getPost('gender'),
+            'age' => $this->request->getPost('age'),
+            'status' => $this->request->getPost('status'),
             'createdate' => date("Y-m-d H:i:s"),
             'createby' => session()->get('name'),
             'updateDate' => date("Y-m-d H:i:s"),
@@ -80,11 +80,11 @@ class Pasien extends BaseController
         $validation =  \Config\Services::validation();
 
         $data = array(
-            'pasienid' => $this->request->getPost(''),
-            'pasienname' => $this->request->getPost(''),
-            'gender' => $this->request->getPost(''),
-            'age' => $this->request->getPost(''),
-            'status' => $this->request->getPost(''),
+            'pasienid' => $this->request->getPost('pasienid'),
+            'pasienname' => $this->request->getPost('pasienname'),
+            'gender' => $this->request->getPost('gender'),
+            'age' => $this->request->getPost('age'),
+            'status' => $this->request->getPost('status'),
             'updateDate' => date("Y-m-d H:i:s"),
             'updateby' => session()->get('name'),
         );

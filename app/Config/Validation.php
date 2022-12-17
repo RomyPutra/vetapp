@@ -120,14 +120,14 @@ class Validation
 	];
 	
 	public $riwayat = [
-        'pasienname'     	=> 'required',
+        'pasienid'     		=> 'required',
         'diagnosa'     		=> 'required',
         'tindakan'     		=> 'required'
 	];
 	
 	public $riwayat_errors = [
-        'pasienname' => [
-            'required'    	=> 'Nama pasien wajib diisi.',
+        'pasienid' => [
+            'required'    	=> 'Id pasien wajib diisi.',
         ],
         'diagnosa' => [
             'required' 		=> 'Diagnosa wajib diisi.'

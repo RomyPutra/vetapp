@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Edit Karyawan</h1>
+          <h1 class="m-0 text-dark">Edit Pasien</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Edit Karyawan</li>
+            <li class="breadcrumb-item active">Edit Pasien</li>
           </ol>
         </div>
       </div>
@@ -22,7 +22,7 @@
     <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
-            <form action="<?php echo base_url('karyawan/update'); ?>" method="post">
+            <form action="<?php echo base_url('pasien/update'); ?>" method="post">
               <div class="card">
                 <div class="card-body">
                   <?php 
@@ -38,61 +38,32 @@
                   </div>
                   <?php } ?>
 
-                  <input type="hidden" name="id_karyawan" value="<?php echo $karyawan['id_karyawan']; ?>">
-                  <div class="form-group">
-                      <label for="">KTP</label>
-                      <input type="text" class="form-control" name="no_ktp" placeholder="Enter Karyawan name" value="<?php echo $karyawan == null ? '' : $karyawan['no_ktp']; ?>">
-                  </div>
+                  <input type="hidden" name="pasienid" value="<?php echo $pasien['PasienId']; ?>">
                   <div class="form-group">
                       <label for="">Nama</label>
-                      <input type="text" class="form-control" name="nama_karyawan" placeholder="Enter Karyawan name" value="<?php echo $karyawan == null ? '' : $karyawan['nama_karyawan']; ?>">
+                      <input type="text" class="form-control" name="pasienname" placeholder="Enter pasien name" value="<?php echo $pasien == null ? '' : $pasien['PasienName']; ?>">
                   </div>
                   <div class="form-group">
                       <label for="">Jenis Kelamin</label>
-                      <select name="jk" id="" class="form-control">
-                          <option <?php echo $karyawan == null ? '' : ($karyawan['jk'] == "L" ? "selected" : ""); ?> value="L">Laki - Laki</option>
-                          <option <?php echo $karyawan == null ? '' : ($karyawan['jk'] == "P" ? "selected" : ""); ?> value="P">Perempuan</option>
+                      <select name="gender" id="gender" class="form-control">
+                          <option <?php echo $pasien == null ? '' : ($pasien['Gender'] == "L" ? "selected" : ""); ?> value="L">Laki - Laki</option>
+                          <option <?php echo $pasien == null ? '' : ($pasien['Gender'] == "P" ? "selected" : ""); ?> value="P">Perempuan</option>
                       </select>
                   </div>
                   <div class="form-group">
-                      <label for="">Alamat</label>
-                      <input type="text" class="form-control" name="alamat" placeholder="Enter Karyawan name" value="<?php echo $karyawan == null ? '' : $karyawan['alamat']; ?>">
+                      <label for="">Umur</label>
+                      <input type="text" class="form-control" name="age" placeholder="Enter umur pasien" value="<?php echo $pasien == null ? '' : $pasien['Age']; ?>">
                   </div>
                   <div class="form-group">
-                      <label for="">No HP</label>
-                      <input type="text" class="form-control" name="no_hp" placeholder="Enter Karyawan name" value="<?php echo $karyawan == null ? '' : $karyawan['no_hp']; ?>">
-                  </div>
-                  <div class="form-group">
-                      <label for="">Bulan Bergabung</label>
-                      <select name="bln" id="" class="form-control">
-                          <option value="">Pilih Bulan</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "01" ? "selected" : ""); ?> value="01">Januari</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "02" ? "selected" : ""); ?> value="02">Februari</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "03" ? "selected" : ""); ?> value="03">Maret</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "04" ? "selected" : ""); ?> value="04">April</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "05" ? "selected" : ""); ?> value="05">Mei</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "06" ? "selected" : ""); ?> value="06">Juni</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "07" ? "selected" : ""); ?> value="07">Juli</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "08" ? "selected" : ""); ?> value="08">Agustus</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "09" ? "selected" : ""); ?> value="09">September</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "10" ? "selected" : ""); ?> value="10">Oktober</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "11" ? "selected" : ""); ?> value="11">November</option>
-                          <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[0] == "12" ? "selected" : ""); ?> value="12">Desember</option>
+                      <label for="">Status Pasien</label>
+                      <select name="status" id="status" class="form-control">
+                          <option <?php echo $pasien == null ? '' : ($pasien['Status'] == "1" ? "selected" : ""); ?> value="1">Aktif</option>
+                          <option <?php echo $pasien == null ? '' : ($pasien['Status'] == "0" ? "selected" : ""); ?> value="0">Tidak Aktif</option>
                       </select>
                   </div>
-                  <div class="form-group">
-                      <label for="">Tahun Bergabung</label>
-                      <select name="thn" id="" class="form-control">
-                          <option value="">Pilih Tahun</option>
-                          <?php $y = date("Y"); for($i=2000;$i < $y;$i++) { ?>
-                            <option <?php echo $karyawan == null ? '' : (explode('-',$karyawan['bln_thn_masuk'])[1] == $i ? "selected" : ""); ?> value="<?php echo $i;?>"><?php echo $i; ?></option>
-                          <?php } ?>
-                      </select>
-                  </div>
-
                 </div>
                 <div class="card-footer">
-                    <a href="<?php echo base_url('karyawan'); ?>" class="btn btn-outline-info">Back</a>
+                    <a href="<?php echo base_url('pasien'); ?>" class="btn btn-outline-info">Back</a>
                     <button type="submit" class="btn btn-primary float-right">Update</button>
                 </div>
               </div>

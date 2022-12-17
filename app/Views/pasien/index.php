@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Karyawan</h1>
+                    <h1 class="m-0 text-dark">Pasien</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Karyawan</li>
+                        <li class="breadcrumb-item active">Pasien</li>
                     </ol>
                 </div>
             </div>
@@ -24,8 +24,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            List Karyawan
-                            <a href="<?php echo base_url('karyawan/create'); ?>" class="btn btn-primary float-right">Tambah</a>
+                            List Pasien
+                            <a href="<?php echo base_url('pasien/create'); ?>" class="btn btn-primary float-right">Tambah</a>
                         </div>
                         <div class="card-body">
                         
@@ -53,31 +53,29 @@
                                     <thead>
                                         <tr class="bg-primary">
                                             <th width="10px">No</th>
-                                            <th>KTP</th>
+                                            <th>Id Pasien</th>
                                             <th>Nama</th>
                                             <th>Jenis Kelamin</th>
-                                            <th>Alamat</th>
-                                            <th>No Hp</th>
-                                            <th>Gabung</th>
+                                            <th>Umur</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($karyawan as $key => $row){ ?>
+                                        <?php foreach($pasien as $key => $row){ ?>
                                         <tr>
                                             <td><?php echo $key + 1; ?></td>
-                                            <td><?php echo $row['no_ktp']; ?></td>
-                                            <td><?php echo $row['nama_karyawan']; ?></td>
-                                            <td><?php echo $row['jk']; ?></td>
-                                            <td><?php echo $row['alamat']; ?></td>
-                                            <td><?php echo $row['no_hp']; ?></td>
-                                            <td><?php echo $row['bln_thn_masuk']; ?></td>
+                                            <td><?php echo $row['PasienId']; ?></td>
+                                            <td><?php echo $row['PasienName']; ?></td>
+                                            <td><?php echo $row['Gender']; ?></td>
+                                            <td><?php echo $row['Age']; ?></td>
+                                            <td><?php echo $row['Status']; ?></td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="<?php echo base_url('karyawan/edit/'.$row['id_karyawan']); ?>" class="btn btn-sm btn-success">
+                                                    <a href="<?php echo base_url('pasien/edit/'.$row['PasienId']); ?>" class="btn btn-sm btn-success">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="<?php echo base_url('karyawan/delete/'.$row['id_karyawan']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus Karyawan ini?');">
+                                                    <a href="<?php echo base_url('pasien/delete/'.$row['PasienId']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus Pasien ini?');">
                                                         <i class="fa fa-trash-alt"></i>
                                                     </a>
                                                 </div>

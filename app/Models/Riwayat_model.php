@@ -3,10 +3,13 @@ use CodeIgniter\Model;
  
 class Riwayat_model extends Model
 {
-    protected $table = 'riwayat';
+    protected $table = 'riwayatpasien';
      
     public function getRiwayat($id = false)
     {
+        $this->join('pasien', 'pasien.PasienId = riwayatpasien.PasienId', 'LEFT');
+        $this->select('pasien.PasienName');
+        $this->select('riwayatpasien.*');
         if($id === false){
             return $this->findAll();
         } else {
@@ -51,4 +54,25 @@ class Riwayat_model extends Model
         return $result;
     }
  
+    public function get_max($id = NULL, $single = TRUE){
+            $idmax = 'MAX(RiwayatId)';    
+            $query = $this->db->query("SELECT $idmax AS max FROM riwayatpasien ORDER BY RiwayatId DESC LIMIT 0,1")->getRow()->max;
+            // log_message("info", "Riwayat Log: ".$this->db->getLastQuery());
+            $thn = date("y");
+            $urut = 1;
+            if (isset($query)) {
+                $explode = array_pop(explode('VET-HI-', $query));
+                $tahun = substr($explode, 0, 2);
+                $tmpu = (int) substr($explode, 3, 5);
+                if ($tahun == $thn) {
+                    $urut = $tmpu + 1;
+                } else {
+                    $urut = 1;
+                }
+                $kode = "VET-HI-" . $thn . "-" . sprintf("%05s", $urut);
+            } else {
+                $kode = "VET-HI-" . $thn . "-" . sprintf("%05s", $urut);
+            }
+            return $kode;
+    }
 }

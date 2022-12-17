@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Create Karyawan</h1>
+          <h1 class="m-0 text-dark">Create Riwayat</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Create Karyawan</li>
+            <li class="breadcrumb-item active">Create Riwayat</li>
           </ol>
         </div>
       </div>
@@ -22,7 +22,7 @@
     <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
-            <form action="<?php echo base_url('karyawan/store'); ?>" method="post">
+            <form action="<?php echo base_url('riwayat/store'); ?>" method="post">
               <div class="card">
                 <div class="card-body">
                   <?php 
@@ -39,59 +39,33 @@
                   </div>
                   <?php } ?>
 
+                  <input type="hidden" name="riwayatid" value="<?php echo $riwayatid; ?>">
                   <div class="form-group">
-                      <label for="">KTP</label>
-                      <input type="text" class="form-control" name="no_ktp" placeholder="Enter Karyawan name" value="<?php echo $inputs == null ? '' : $inputs['no_ktp']; ?>">
+                      <label for="">Pasien Id</label>
+                      <input type="text" class="form-control" name="pasienid" placeholder="Enter pasien id" value="<?php echo $inputs == null ? '' : $inputs['pasienid']; ?>">
                   </div>
                   <div class="form-group">
-                      <label for="">Nama</label>
-                      <input type="text" class="form-control" name="nama_karyawan" placeholder="Enter Karyawan name" value="<?php echo $inputs == null ? '' : $inputs['nama_karyawan']; ?>">
+                      <label for="">Diagnosa</label>
+                      <input type="text" class="form-control" name="diagnosa" placeholder="Enter diagnosa" value="<?php echo $inputs == null ? '' : $inputs['diagnosa']; ?>">
                   </div>
                   <div class="form-group">
-                      <label for="">Jenis Kelamin</label>
-                      <select name="jk" id="" class="form-control">
-                          <option <?php echo $inputs == null ? '' : ($inputs['jk'] == "L" ? "selected" : ""); ?> value="L">Laki - Laki</option>
-                          <option <?php echo $inputs == null ? '' : ($inputs['jk'] == "P" ? "selected" : ""); ?> value="P">Perempuan</option>
-                      </select>
+                      <label for="">Tindakan</label>
+                      <input type="text" class="form-control" name="tindakan" placeholder="Enter tindakan" value="<?php echo $inputs == null ? '' : $inputs['tindakan']; ?>">
                   </div>
                   <div class="form-group">
-                      <label for="">Alamat</label>
-                      <input type="text" class="form-control" name="alamat" placeholder="Enter Karyawan name" value="<?php echo $inputs == null ? '' : $inputs['alamat']; ?>">
+                      <label for="">Obat</label>
+                      <input type="text" class="form-control" name="obat" placeholder="Enter obat" value="<?php echo $inputs == null ? '' : $inputs['obat']; ?>">
                   </div>
                   <div class="form-group">
-                      <label for="">No HP</label>
-                      <input type="text" class="form-control" name="no_hp" placeholder="Enter Karyawan name" value="<?php echo $inputs == null ? '' : $inputs['no_hp']; ?>">
-                  </div>
-                  <div class="form-group">
-                      <label for="">Bulan Bergabung</label>
-                      <select name="bln" id="" class="form-control">
-                          <option value="">Pilih Bulan</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "01" ? "selected" : ""); ?> value="01">Januari</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "02" ? "selected" : ""); ?> value="02">Februari</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "03" ? "selected" : ""); ?> value="03">Maret</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "04" ? "selected" : ""); ?> value="04">April</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "05" ? "selected" : ""); ?> value="05">Mei</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "06" ? "selected" : ""); ?> value="06">Juni</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "07" ? "selected" : ""); ?> value="07">Juli</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "08" ? "selected" : ""); ?> value="08">Agustus</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "09" ? "selected" : ""); ?> value="09">September</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "10" ? "selected" : ""); ?> value="10">Oktober</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "11" ? "selected" : ""); ?> value="11">November</option>
-                          <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[0] == "12" ? "selected" : ""); ?> value="12">Desember</option>
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="">Tahun Bergabung</label>
-                      <select name="thn" id="" class="form-control">
-                          <option value="">Pilih Tahun</option>
-                          <?php $y = date("Y"); for($i=2000;$i < $y;$i++) { ?>
-                            <option <?php echo $inputs == null ? '' : (explode('-',$inputs['bln_thn_masuk'])[1] == $i ? "selected" : ""); ?> value="<?php echo $i;?>"><?php echo $i; ?></option>
-                          <?php } ?>
+                      <label for="">Status Pasien</label>
+                      <select name="status" id="status" class="form-control">
+                          <option <?php echo $inputs == null ? '' : ($inputs['status'] == "1" ? "selected" : ""); ?> value="1">Aktif</option>
+                          <option <?php echo $inputs == null ? '' : ($inputs['status'] == "0" ? "selected" : ""); ?> value="0">Tidak Aktif</option>
                       </select>
                   </div>
                 </div>
                 <div class="card-footer">
-                    <a href="<?php echo base_url('karyawan'); ?>" class="btn btn-outline-info">Back</a>
+                    <a href="<?php echo base_url('riwayat'); ?>" class="btn btn-outline-info">Back</a>
                     <button type="submit" class="btn btn-primary float-right">Simpan</button>
                 </div>
               </div>
