@@ -61,7 +61,8 @@ class Riwayat_model extends Model
             $thn = date("y");
             $urut = 1;
             if (isset($query)) {
-                $explode = array_pop(explode('VET-HI-', $query));
+                $exp = explode("VET-HI-", $query);
+                $explode = array_pop($exp);
                 $tahun = substr($explode, 0, 2);
                 $tmpu = (int) substr($explode, 3, 5);
                 if ($tahun == $thn) {
